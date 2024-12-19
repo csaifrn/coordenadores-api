@@ -1,13 +1,10 @@
-### root
-GET http://localhost:8888/
-
 ###
 GET http://localhost:8888/auth/login
 
 ###
 POST http://localhost:8888/auth/logout
-Authorization: Bearer NskiarhF9Dl14buvsVgdZTdGVwuQLA
+Authorization: Bearer <seu_token>
 
 ###
 GET http://localhost:8888/auth/user
-Authorization: Bearer NskiarhF9Dl14buvsVgdZTdGVwuQLA
+Authorization: Bearer <seu_token>

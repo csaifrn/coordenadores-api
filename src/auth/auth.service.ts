@@ -12,11 +12,11 @@ export class AuthService {
 
   getLoginURL(): string {
     const loginUrl = authHost + 'o/authorize/' +
-      "?response_type=" + 'token' +
-      "&grant_type="    + 'implicit' +
-      "&client_id="     + clientID +
-      "&scope="  + scope;
-      "&redirect_uri="  + redirectURI;
+            "?response_type=" + 'token' +
+            "&grant_type="    + 'implicit' +
+            "&client_id="     + clientID +
+            "&redirect_uri="  + redirectURI +
+            "&scope="         + scope;
     return loginUrl;
   }
 
