@@ -1,24 +1,14 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import axios from 'axios';
-//import { SuapClient } from './client';
+import 'dotenv/config';
 
-const authHost = 'https://suap.ifrn.edu.br/';
-const clientID = 'NUw7bYAll22oHKq8eCH8I7hV3sc7pD7OPUbOSU41';
-const redirectURI = 'http://localhost:8888/';
-const scope = 'identificacao email documentos_pessoais';
+const authHost = process.env.SUAP_AUTH_HOST;
+const clientID = process.env.SUAP_CLIENT_ID;
+const redirectURI = process.env.SUAP_REDIRECT_URI;
+const scope = process.env.SUAP_SCOPE;
 
 @Injectable()
 export class AuthService {
-  // private suapClient: any;
-
-  // constructor() {
-  //   const authHost = 'https://suap.ifrn.edu.br';
-  //   const clientID = 'NUw7bYAll22oHKq8eCH8I7hV3sc7pD7OPUbOSU41';
-  //   const redirectURI = 'http://localhost:8888/';
-  //   const scope = 'identificacao email documentos_pessoais';
-
-  //   this.suapClient = new SuapClient(authHost, clientID, redirectURI, scope);
-  // }
 
   getLoginURL(): string {
     const loginUrl = authHost + 'o/authorize/' +

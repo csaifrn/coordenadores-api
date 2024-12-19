@@ -1,21 +1,24 @@
 import { Controller, Get, Redirect, Headers, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Get('login')
-  @Redirect()
+  @ApiOperation({ summary: 'Gera a URL de login no SUAP' })
+  //@Redirect()
   login() {
     const loginURL = this.authService.getLoginURL();
     return { url: loginURL };
   }
 
   @Get('user')
+  @ApiOperation({ summary: 'Mostra seus dados do SUAP' })
+  @ApiBearerAuth()
   async getUserData(@Headers() headers: any) {
 
-    //console.log('Headers:', headers);
     const authHeader = headers['authorization'] || headers['Authorization'];
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -33,7 +36,12 @@ export class AuthController {
   }
 
     @Post('logout')
-    async logout(@Headers('authorization') authHeader: string) {
+    @ApiBearerAuth()
+    @ApiOperation({ summary: 'Invalida um token de login' })
+    async logout(@Headers() headers: any) {
+
+      const authHeader = headers['authorization'] || headers['Authorization'];
+
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
         throw new HttpException('Token não fornecido ou inválido.', HttpStatus.UNAUTHORIZED);
       }

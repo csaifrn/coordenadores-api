@@ -6,8 +6,8 @@ GET http://localhost:8888/auth/login
 
 ###
 POST http://localhost:8888/auth/logout
-Authorization: Bearer Q3PvP5sLoxpVbnbfneAPJQ7n56srcm
+Authorization: Bearer NskiarhF9Dl14buvsVgdZTdGVwuQLA
 
 ###
 GET http://localhost:8888/auth/user
-Authorization: Bearer Q3PvP5sLoxpVbnbfneAPJQ7n56srcm
+Authorization: Bearer NskiarhF9Dl14buvsVgdZTdGVwuQLA
