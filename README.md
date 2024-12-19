@@ -1,73 +1,35 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Descrição
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API para o aplicativo que visa permitir que os coordenadores de curso superior do IFRN CNAT consigam obter os dados dos alunos de forma prática.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## Como iniciar o projeto
 
 ```bash
-$ npm install
-```
+# instalar as dependências
+$ npm i
 
-## Running the app
-
-```bash
-# development
+# iniciar a aplicação
 $ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
+## Como usar os endpoints
 
-## Test
+### Pelo Swagger
+- Acesse pelo navegador o link da api: `http://localhost:8888/api/`;
+- Clique em "Try it out" no GET de login e depois em "Execute";
+- Copie o link em "Response body" e cole no seu navegador;
+- Faça o login com sua conta do SUAP e permita a aplicação;
+- Copie o token no link da página redirecionada, ele aparecerá assim: `[...]#access_token=<seu_token>&[...]`;
+- Volte para o link da api e clique no botão à direita "Authorize";
+- Insira o seu token copiado, clique em "Authorize" e pode fechar o modal;
+- Agora você pode testar os endpoints que têm um cadeado no lado direito.
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### Pelo REST Client
+- Tenha instalado no seu VS Code a extensão "REST Client";
+- Abra o arquivo "root.http" na pasta "rest-client";
+- Clique em "Send Request" acima de `GET http://localhost:8888/auth/login/`;
+- Acesse a URL que aparecer na aba "Response";
+- Faça o login com sua conta do SUAP e permita a aplicação;
+- Copie o token no link da página redirecionada, ele aparecerá assim: `[...]#access_token=<seu_token>&[...]`;
+- Volte para o arquivo "root.http" no VS Code;
+- Substitua onde tiver `<seu_token>` pelo seu token copiado;
+- Agora você pode testar os endpoints que necessitam de autorização.
