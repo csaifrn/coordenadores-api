@@ -8,7 +8,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Coordenação API')
     .setDescription('API para o aplicativo que visa permitir que os coordenadores de curso superior do IFRN CNAT consigam obter os dados dos alunos de forma prática.')
-    .setVersion('v1')
+    .setVersion('beta')
     .addBearerAuth()
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);

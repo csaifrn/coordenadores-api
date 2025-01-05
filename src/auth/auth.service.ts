@@ -19,28 +19,6 @@ export class AuthService {
             "&scope="         + scope;
     return loginUrl;
   }
-
-  /**
-  * @param {string} token 
-  * @returns {Promise<any>} 
-  */
-  async getUserData(token: string): Promise<any> {
-    //console.log(token)
-    try {
-      const response = await axios.get(`${authHost}api/v2/minhas-informacoes/meus-dados/`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-          accept: 'application/json'
-        },
-      });
-      return response.data;
-    } catch (error) {
-      throw new HttpException(
-        error.response?.data || 'Erro ao obter dados do usuário',
-        error.response?.status || HttpStatus.INTERNAL_SERVER_ERROR,
-      );
-    }
-  }
   
  /**
  * @param {string} token
